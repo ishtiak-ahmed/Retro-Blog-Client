@@ -8,7 +8,7 @@ const Header = () => {
     return (
         <header style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
             <Link to='/'>
-            <img src="" alt="logo" />
+            <img src="" alt="Retro Blog" />
             </Link>
             {
                 user.userName === 'Admin' ?
