@@ -7,7 +7,7 @@ const AddComment = ({postID}) => {
         const email = e.target.children[4].value;
         const content = e.target.children[6].value;
         
-        fetch('http://localhost:3002/comment/addNewComment', {
+        fetch('https://ishtiak-blog-app.herokuapp.com/comment/addNewComment', {
             method: "POST",
             headers: {"content-type": "application/json"},
             body: JSON.stringify({commenterName,email,content, postID})

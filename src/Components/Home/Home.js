@@ -11,7 +11,7 @@ const Home = () => {
 
     const [myBlogs, setMyBlogs] = useState([])
     useEffect(()=> {
-        fetch('http://localhost:3002/post/getAllPosts')
+        fetch('https://ishtiak-blog-app.herokuapp.com/post/getAllPosts')
         .then(res => res.json())
         .then(data => {
             setMyBlogs(data.data.posts)

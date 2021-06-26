@@ -13,7 +13,7 @@ const Blog = () => {
     if(id.length <= 1){
         url = "https://jsonplaceholder.typicode.com/posts/" + id;
     }else{
-        url = "http://localhost:3002/post/getPost/" + id;
+        url = "https://ishtiak-blog-app.herokuapp.com/post/getPost/" + id;
     }
     useEffect(()=> {
         fetch(url)
@@ -22,7 +22,7 @@ const Blog = () => {
     },[url])
     // Load Comments
     useEffect(()=> {
-        fetch('http://localhost:3002/comment/getAllComments/'+ id)
+        fetch('https://ishtiak-blog-app.herokuapp.com/comment/getAllComments/'+ id)
         .then(res => res.json())
         .then(data => setComments(data.data.comments))
     },[id])
