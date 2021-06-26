@@ -11,7 +11,7 @@ const AddBlog = ({setCreateBlog}) => {
         const content = parent[5].value;
         console.log(title, tags, content)
 
-        fetch('http://localhost:3002/post/addNewPost', {
+        fetch('https://ishtiak-blog-app.herokuapp.com/post/addNewPost', {
             method: 'POST',
             headers: {"content-type": "application/json"},
             body: JSON.stringify({title, tags, content})

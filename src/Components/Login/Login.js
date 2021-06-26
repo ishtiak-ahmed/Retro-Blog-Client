@@ -10,7 +10,7 @@ const Login = () => {
             email: e.target.children[1].value,
             password: e.target.children[4].value,
         }
-        fetch('http://localhost:3002/auth/login', {
+        fetch('https://ishtiak-blog-app.herokuapp.com/auth/login', {
             method: 'POST',
             headers: {"content-type": "application/json"},
             body: JSON.stringify(data)

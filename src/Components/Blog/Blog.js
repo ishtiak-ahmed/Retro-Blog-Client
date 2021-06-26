@@ -4,8 +4,11 @@ import { UserContext } from '../../App';
 import AddComment from './AddComment';
 import Comment from './Comment';
 
+
+export const CommentContext = createContext();
 const Blog = () => {
     const [comments, setComments] = useState([])
+    const [addComment, setAddComment] = useState(1);
     const [user] = useContext(UserContext)
     const [blog, setBlog] = useState({})
     const id = useParams().id;
@@ -25,10 +28,10 @@ const Blog = () => {
         fetch('https://ishtiak-blog-app.herokuapp.com/comment/getAllComments/'+ id)
         .then(res => res.json())
         .then(data => setComments(data.data.comments))
-    },[id])
+    },[id, addComment])
     return (
         <div>
-            <h1 style={{fontSize: '45px'}}>{blog.title}</h1>
+            <h1 style={{fontSize: '45px', color: '#E65100'}}>{blog.title}</h1>
             <img style={{maxWidth: '100%'}} src="https://picsum.photos/1200/500" alt="thumbs" />
             <p>{blog.body}{blog.content}</p>
             <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Culpa, excepturi commodi fuga nihil nisi veritatis eaque accusamus assumenda. Reiciendis deserunt, fuga officia animi laboriosam quisquam sint totam reprehenderit aliquam consequuntur saepe, dolor rem maxime provident aliquid distinctio numquam obcaecati eaque. Sequi in nulla alias placeat. Odit iusto doloremque est corporis quaerat animi, natus ipsum veniam harum, commodi, tempora voluptates expedita error praesentium! Possimus dolor sapiente optio.</p>
@@ -36,9 +39,9 @@ const Blog = () => {
                 user.userName ? <button>Delete</button> : ''
             }
             <div className="comments">
-                <AddComment postID={id}></AddComment>
+                <AddComment setAddComment={setAddComment} addComment={addComment} postID={id}></AddComment>
                 {
-                    comments.map(comment => <Comment key={comment._id} comment={comment}></Comment>)
+                    comments.map(comment => <Comment setAddComment={setAddComment} addComment={addComment} key={comment._id} comment={comment}></Comment>)
                 }
             </div>
         </div>

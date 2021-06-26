@@ -7,6 +7,10 @@
   padding: 2em;
 }
 
+body {
+  /* background-color: #90CAF9; */
+}
+
 .newBlog {
   position: fixed;
   inset: 0;

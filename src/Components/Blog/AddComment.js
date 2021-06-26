@@ -1,6 +1,6 @@
 import React from 'react';
 
-const AddComment = ({postID}) => {
+const AddComment = ({postID, addComment, setAddComment}) => {
     const handleComment = e => {
         e.preventDefault()
         const commenterName = e.target.children[1].value;
@@ -12,7 +12,7 @@ const AddComment = ({postID}) => {
             headers: {"content-type": "application/json"},
             body: JSON.stringify({commenterName,email,content, postID})
         }).then(res => res.json())
-        .then(data => console.log(data))
+        .then(data => setAddComment(addComment + 1))
     }
     return (
         <div>
