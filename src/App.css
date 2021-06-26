@@ -8,7 +8,7 @@
 }
 
 body {
-  /* background-color: #90CAF9; */
+  background-color: #CFD8DC;
 }
 
 .newBlog {
@@ -32,6 +32,11 @@ body {
   border-radius: 10px;
 }
 
+a {
+  text-decoration: none;
+  color: #004D40;
+}
+
 main {
   margin-top: 20px;
   display: grid;
@@ -41,5 +46,28 @@ main {
 main > div {
   border-radius: 1em;
   padding: 1em;
-  border: 1px solid lightgray;
+  border: 1px solid #004D40;
+}
+
+ input, .addblog textarea{
+  width: 350px;
+  outline: none;
+  border: 1px solid #004D40;
+  padding: 5px 1em;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+button, input[type= 'submit'] {
+  padding: 5px 2em;
+  border: 2px solid #004D40;
+  color: #004d40;
+  background-color: transparent;
+  border-radius: 5px;
+  transition: all .5s ease;
+}
+
+button:hover {
+  background-color: #004D40;
+  color: #fff;
 }
