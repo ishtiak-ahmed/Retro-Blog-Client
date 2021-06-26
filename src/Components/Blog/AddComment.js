@@ -16,7 +16,7 @@ const AddComment = ({postID, addComment, setAddComment}) => {
     }
     return (
         <div className='addblog'>
-            <h3>Add a comment</h3>
+            <h3>Leave a comment</h3>
             <form onSubmit={handleComment}>
             <input type="text" placeholder='name (required)' /> <br />
             <input type="text" placeholder="email" /> <br />

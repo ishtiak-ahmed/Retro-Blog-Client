@@ -28,7 +28,7 @@ const Blog = () => {
         .then(data => setComments(data.data.comments))
     },[id, addComment])
     return (
-        <div>
+        <div className="fullblog">
             <h1 style={{fontSize: '45px', color: '#004D40'}}>{blog.title}</h1>
             {
                 blog.imageURL ? <img style={{width: '100%'}} src={blog.imageURL} alt="thumbs" /> :
