@@ -6,9 +6,7 @@ const Comment = ({comment, addComment, setAddComment}) => {
     const deleteComment = () => {
         fetch('https://ishtiak-blog-app.herokuapp.com/comment/deleteComment/' + comment._id, {
             method: 'DELETE'
-        }).then(res => res.json())
-        .then((data) => {
-            console.log(data)
+        }).then(() => {
             setAddComment(addComment + 1)}
         )
     }
