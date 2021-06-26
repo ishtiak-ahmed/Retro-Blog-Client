@@ -43,11 +43,6 @@ main {
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   grid-gap: 2em;
 }
-main > div {
-  border-radius: 1em;
-  padding: 1em;
-  border: 1px solid #004D40;
-}
 
  input, .addblog textarea{
   width: 350px;
@@ -70,4 +65,14 @@ button, input[type= 'submit'] {
 button:hover {
   background-color: #004D40;
   color: #fff;
+}
+
+.shortblog {
+  display: flex;
+  flex-direction: column;
+  height: 300px;
+  justify-content: space-between;
+  border-radius: .5em;
+  padding: 1em;
+  box-shadow: 2px 2px 15px rgba(0, 77, 64,0.5);
 }
