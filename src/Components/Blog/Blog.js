@@ -1,10 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { UserContext } from '../../App';
+import { useHistory, useParams } from 'react-router-dom';
+import { FetchContext, UserContext } from '../../App';
 import AddComment from './AddComment';
 import Comment from './Comment';
 
 const Blog = () => {
+    const [fetchData, setFetchData] = useContext(FetchContext);
+    const history = useHistory();
     const [comments, setComments] = useState([])
     const [addComment, setAddComment] = useState(1);
     const [user] = useContext(UserContext)
@@ -27,6 +29,16 @@ const Blog = () => {
         .then(res => res.json())
         .then(data => setComments(data.data.comments))
     },[id, addComment])
+
+    const deletePost = ()=> {
+        fetch('https://ishtiak-blog-app.herokuapp.com/post/deletePost/'+ id, {method: 'DELETE'})
+        .then((data)=> {
+            console.log(data)
+            setFetchData(fetchData + 1)
+            history.push('/')
+        })
+    }
+
     return (
         <div className="fullblog">
             <h1 style={{fontSize: '45px', color: '#004D40'}}>{blog.title}</h1>
@@ -38,7 +50,7 @@ const Blog = () => {
             <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Culpa, excepturi commodi fuga nihil nisi veritatis eaque accusamus assumenda. Reiciendis deserunt, fuga officia animi laboriosam quisquam sint totam reprehenderit aliquam consequuntur saepe, dolor rem maxime provident aliquid distinctio numquam obcaecati eaque. Sequi in nulla alias placeat. Odit iusto doloremque est corporis quaerat animi, natus ipsum veniam harum, commodi, tempora voluptates expedita error praesentium! Possimus dolor sapiente optio.</p>
             <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Libero, quisquam cum quibusdam, repellendus quidem sunt reprehenderit aut animi aspernatur modi, quasi nostrum ipsum illum rerum voluptas. Temporibus porro amet consequuntur nesciunt error, repellat dolorum iusto earum doloribus, quia aut, non officiis. Amet libero id cum sapiente perferendis enim illum voluptatum animi in? Aperiam amet mollitia placeat esse minus, adipisci obcaecati suscipit voluptate ipsum voluptatibus ad debitis quas est unde neque at quod dolor, ullam tempore eius praesentium! Nulla, doloribus at aliquid fugit odio voluptate libero tenetur iste quis exercitationem totam tempora possimus voluptates commodi, rem quaerat assumenda quasi. Aliquam quia nesciunt accusantium. Vitae, deleniti. Perferendis impedit quasi, consectetur tempore totam nostrum ratione earum rerum fugit debitis asperiores voluptas eos sequi id esse dicta ex reiciendis magnam consequuntur architecto. Quia est, minima doloremque, ullam quasi ad aliquid rem laudantium facere, quae qui ea minus unde? Incidunt vero soluta aliquam id, recusandae consequuntur voluptates animi expedita in enim veritatis distinctio architecto cum, ad odit, iste facilis quis aspernatur placeat corporis. Alias animi quasi, debitis illum provident vel! Maiores saepe quod debitis voluptatum autem facilis eaque placeat fugit optio inventore. Ullam veniam eaque accusamus, eveniet pariatur obcaecati consequatur reiciendis dicta minima id quo culpa veritatis nobis earum voluptatum modi in velit vero officia ipsam distinctio aliquid. Debitis doloribus, rem explicabo qui tenetur soluta accusantium nisi.</p>
             {
-                user.userName ? <button>Delete</button> : ''
+                user.userName ? <button onClick={deletePost}>Delete</button> : ''
             }
             <div className="comments">
                 <AddComment setAddComment={setAddComment} addComment={addComment} postID={id}></AddComment>

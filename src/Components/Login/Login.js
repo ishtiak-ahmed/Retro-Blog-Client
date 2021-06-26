@@ -3,7 +3,6 @@ import { UserContext } from '../../App';
 
 const Login = () => {
     const [user, setUser] = useContext(UserContext);
-    console.log(user.userName)
     const handleLogin = e => {
         e.preventDefault();
         const data = {

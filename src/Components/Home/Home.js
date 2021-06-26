@@ -1,23 +1,6 @@
-import React, { useEffect, useState } from 'react';
 import ShortBlog from './ShortBlog';
 
-const Home = () => {
-    const [blogs, setBlogs] = useState([])
-    useEffect(()=> {
-        fetch('https://jsonplaceholder.typicode.com/posts')
-        .then(res => res.json())
-        .then(data => setBlogs(data))
-    }, [])
-
-    const [myBlogs, setMyBlogs] = useState([])
-    useEffect(()=> {
-        fetch('https://ishtiak-blog-app.herokuapp.com/post/getAllPosts')
-        .then(res => res.json())
-        .then(data => {
-            setMyBlogs(data.data.posts)
-        })
-    }, [])
-
+const Home = ({blogs, myBlogs}) => {
     return (
         <main>
             {

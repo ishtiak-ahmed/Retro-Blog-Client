@@ -1,7 +1,9 @@
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
+import { FetchContext} from '../../App';
 
 const AddBlog = ({setCreateBlog}) => {
+    const [fetchData, setFetchData] = useContext(FetchContext);
     const [imageURL, setImageURL] = useState('')
     const submitBlog = e => {
         e.preventDefault()
@@ -19,8 +21,12 @@ const AddBlog = ({setCreateBlog}) => {
         })
         .then(res => res.json())
         .then(data => {
-            if(data.data.post){
+            if(data.data){
+                console.log(fetchData)
+                setFetchData(fetchData + 1)
                 setCreateBlog(false)
+            }else{
+                alert('something went wrong..')
             }
         })
     }
